@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Vectores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧮 Calculadora de Vectores</h1>
+            <p>Realiza operaciones vectoriales con visualización gráfica en tiempo real</p>
+        </div>
+
+        <div class="mode-selector">
+            <button class="mode-btn active" onclick="setMode('2D')">Modo 2D</button>
+            <button class="mode-btn" onclick="setMode('3D')">Modo 3D</button>
+        </div>
+
+        <div class="main-content">
+            <div class="input-panel">
+                <div class="vector-input">
+                    <h3>📍 Vector A</h3>
+                    <div class="vector-row">
+                        <label>x:</label>
+                        <input type="number" id="ax" placeholder="Componente X" value="3">
+                        <label>y:</label>
+                        <input type="number" id="ay" placeholder="Componente Y" value="2">
+                        <label id="az-label" style="display:none;">z:</label>
+                        <input type="number" id="az" placeholder="Componente Z" value="0" style="display:none;">
+                    </div>
+                </div>
+
+                <div class="vector-input">
+                    <h3>📍 Vector B</h3>
+                    <div class="vector-row">
+                        <label>x:</label>
+                        <input type="number" id="bx" placeholder="Componente X" value="1">
+                        <label>y:</label>
+                        <input type="number" id="by" placeholder="Componente Y" value="4">
+                        <label id="bz-label" style="display:none;">z:</label>
+                        <input type="number" id="bz" placeholder="Componente Z" value="0" style="display:none;">
+                    </div>
+                </div>
+
+                <div class="operations">
+                    <button class="btn" onclick="calculate('suma')">A + B</button>
+                    <button class="btn" onclick="calculate('resta')">A - B</button>
+                    <button class="btn secondary" onclick="calculate('producto_punto')">A · B</button>
+                    <button class="btn secondary" onclick="calculate('producto_cruz')" id="cruz-btn" style="display:none;">A × B</button>
+                    <button class="btn" onclick="calculate('magnitud_a')">|A|</button>
+                    <button class="btn" onclick="calculate('magnitud_b')">|B|</button>
+                </div>
+            </div>
+
+                <div class="visualization">
+                <h3>📊 Visualización</h3>
+                <div class="canvas-container" id="canvas-container">
+                    <canvas id="vectorCanvas" width="400" height="300"></canvas>
+                    <div id="threejs-container" style="display: none; width: 100%; height: 100%;"></div>
+                </div>
+                
+                <div class="controls">
+                    <button class="control-btn" onclick="resetView()">🔄 Reset</button>
+                    <button class="control-btn" onclick="toggleGrid()">📐 Grid</button>
+                    <button class="control-btn" onclick="autoFit()">🎯 Auto Fit</button>
+                </div>
+                
+                <div class="results" id="results">
+                    <h3>📋 Resultados</h3>
+                    <p>Selecciona una operación para ver los resultados aquí.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
