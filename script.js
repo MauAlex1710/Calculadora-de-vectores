@@ -412,6 +412,29 @@ function calculate(operation) {
             result += `<div class="result-item"><em>Longitud del vector B</em></div>`;
             break;
         }
+        case 'producto_triple': {
+            function calculate(type) {
+  if (type === 'producto_triple') {
+    // Ejemplo: vectores a, b, c
+    const a = [1, 2, 3];
+    const b = [4, 5, 6];
+    const c = [7, 8, 9];
+
+    // Calcular b × c (producto cruz)
+    const cruz = [
+      b[1] * c[2] - b[2] * c[1],
+      b[2] * c[0] - b[0] * c[2],
+      b[0] * c[1] - b[1] * c[0]
+    ];
+
+    // Producto escalar a · (b × c)
+    const resultado = a[0] * cruz[0] + a[1] * cruz[1] + a[2] * cruz[2];
+
+    // Mostrar en el <p id="resultado">
+    document.getElementById("resultado").textContent =
+      `a · (b × c) = ${resultado}`;
+  }
+}
     }
     
     // Mostrar resultado
